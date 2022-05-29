@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IFoodLocalMapper">
+
+    <!--    查询全部的信息，分页展示展示到美食后台主页面上-->
+    <resultMap id="foodLocalMap" type="FoodLocal">
+        <id column="id" property="id"></id>
+        <result column="food_img" property="foodImg"></result>
+        <result column="food_name" property="foodName"></result>
+        <result column="food_class" property="foodClass"></result>
+        <result column="food_introduce" property="foodIntroduce"></result>
+        <result column="region_id" property="region.id"></result>
+        <result column="region_name" property="region.RegionName"></result>
+    </resultMap>
+    <select id="queryAllMessage" resultMap="foodLocalMap">
+        select * from food_local f,region r where f.region_id=r.id  limit #{pageSize},#{pageCode}
+    </select>
+
+    <select id="queryAllFoodInfo" resultMap="foodLocalMap">
+        select * from food_local f,region r where f.region_id=r.id
+    </select>
+
+    <select id="queryByName" resultMap="foodLocalMap">
+        select * from food_local f,region r where f.region_id=r.id and food_name=#{foodName}
+    </select>
+
+    <select id="queryFoodLocalByName" resultType="FoodLocal">
+        select * from food_local where  food_name=#{foodName}
+    </select>
+
+</mapper>

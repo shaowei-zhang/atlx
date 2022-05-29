@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IFoodCollectionMapper">
+
+    <resultMap id="foodCollectionMap" type="FoodCollection">
+        <!--手动指定字段与实体属性的映射关系
+            column: 数据表的字段名称
+            property：实体的属性名称
+        -->
+        <id column="id" property="id"></id>
+        <result column="account" property="account"></result>
+        <result column="food_local_id" property="foodLocal.id"></result>
+        <result column="food_img" property="foodLocal.foodImg"></result>
+        <result column="food_name" property="foodLocal.foodName"></result>
+        <result column="food_class" property="foodLocal.foodClass"></result>
+        <result column="food_introduce" property="foodLocal.foodIntroduce"></result>
+    </resultMap>
+    <select id="queryAllByAccount" resultMap="foodCollectionMap">
+        select * from food_collection fc,food_local fl where fc.food_local_id=fl.id  and account=#{account}
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IHotelMapper">
+    <select id="queryHotel" resultMap="hotelMap">
+        select * from hotel h,region r where h.region_id=r.id
+    </select>
+    <resultMap id="hotelMap" type="Hotel">
+        <id column="id" property="id"></id>
+        <result column="hotel_name" property="hotelName"></result>
+        <result column="hotel_addr" property="hotelAddr"></result>
+        <result column="hotel_remark" property="hotelRemark"></result>
+        <result column="hotel_img" property="hotelImg"></result>
+        <result column="region_id" property="region.id"></result>
+        <result column="region_name" property="region.RegionName"></result>
+    </resultMap>
+
+    <select id="queryByName" resultMap="hotelMap">
+        select * from hotel h,region r where h.region_id=r.id and h.hotel_name=#{hotel_name}
+    </select>
+
+    <select id="queryHotelImg" resultMap="hotelMap">
+        select hotel_img from hotel
+    </select>
+
+    <select id="queryIdByName" resultType="hotel">
+        select * from hotel where hotel_name=#{hotelName}
+    </select>
+
+</mapper>

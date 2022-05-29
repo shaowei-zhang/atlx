@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IMenuMapper">
+
+    <select id="findChildrenMenuByFatherMenuId" resultType="sysChildrenMenu">
+        SELECT
+            sys_children_menu.title,
+            sys_children_menu.`name`,
+            sys_children_menu.icon,
+            sys_children_menu.component,
+            sys_children_menu.path
+        FROM
+            sys_children_menu
+        WHERE
+            sys_children_menu.father_menu_id = #{fatherMenuId}
+    </select>
+
+    <select id="findFatherMenu" resultType="sysFatherMenu">
+        SELECT * FROM sys_father_menu
+    </select>
+
+</mapper>

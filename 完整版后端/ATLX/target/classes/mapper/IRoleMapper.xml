@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IRoleMapper">
+    <select id="queryRole" resultType="Role">
+        select * from role
+    </select>
+
+    <select id="queryRoleByRoleName" resultType="Role">
+        select * from role where description=#{description}
+    </select>
+
+    <select id="queryRoleById" resultType="Role">
+        select * from role where id=#{id}
+    </select>
+
+    <update id="updateRole" parameterType="Role">
+        update role
+        set role_name=#{roleName},description=#{description}
+        where id=#{id}
+    </update>
+
+    <insert id="insertRole" parameterType="Role">
+        insert into role(role_name,description) value(#{roleName},#{description})
+    </insert>
+
+    <delete id="deleteRole" parameterType="java.lang.Integer">
+        delete from role where id = #{id}
+    </delete>
+</mapper>

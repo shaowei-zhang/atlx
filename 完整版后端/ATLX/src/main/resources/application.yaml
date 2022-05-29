@@ -1,0 +1,64 @@
+server:
+  port: 8088
+  ip: localhost
+files:
+  upload:
+    path: D:/atlx图片文件夹/imgs
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/atlx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #指定redis信息 (如 host, ip, password)
+  redis:
+    host: localhost
+    port: 6379
+  #没有密码可以不用配置这个
+  #password=123456
+
+  jpa:
+    #开启SQL语句执行日志信息
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  main:
+    allow-circular-references: true
+
+#邮件
+  mail:
+    host: smtp.qq.com
+    username: atlx-qq-email@qq.com
+    password: mucbxqaifoxedcgi
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+
+#mybatis配置
+mybatis-plus:
+
+  # POJO别名包
+  type-aliases-package: com.atlx.pojo
+  # Mapper映射文件加载路径
+  mapper-locations: classpath:mapper/*.xml
+  #直接将结果输出在控制台
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  redis:
+#    host: 192.168.145.1
+#atlx:
+#  jwt:
+#    header: Authorization
+#    expire: 604800 #7天，秒单位7 * 24 * 60 * 60 * 1000
+#    secret: ji8n3439n439n43ld9ne9343fdfer49h
+
+alipay:
+  appId: 2021000117693235
+  appPrivateKey: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAyLQPfdeZYxmMuz6C4tUupr/7yRGytQ9lIU08pGOwTvnU8ZK9vJi6an5E+ukSY8otIAMy9/kdFhH+2F+r8j3GBinBL5/+YmaVFTE8OIJRrIEhPX0RfclN15kAkwDVJ5DxZtdhkYnCOUQ4ghmm4umkeG7Qqo7PF7gTjrzgyxk8luN3BGr1haiTiHX2lcPzHG+7T0QQHdHssMFHspHP9gvrb8An/cCsNo6o5A5XTIl6bpi3Mksw+cPBAHJ6Ev9bdJtQya82ShcpRX/AO3BF2yzrNxbGjFJTHVjbDUOjQiv64xv6p8AWiiYUseUqM9h9OfPonZ1KnDY1YffZfZKXBSx5AgMBAAECggEAa+Fkca7YMWu1Zn15s8C/z0Vc9cdE8h5EKTGDiUXsy0LGp5UvqqGZTeg+FNfcCYByKOJbJ/CAJPiuxU/L6eq7Cs90GjlObQofoZmkXbC5rH6+HB3OmTUsqzTU1+9rbdygTZZhPKY20ss9E+op9KvSV0lVqctn8xew2LDtnVXKH47Pl+rMw0RbGAKDLEgoEPtkR9APqNUUxSI0mwh5kcnvm6zEj/Gp9TzMdXjiBd96L0cT+ZhBjHI0uaXUGgxzdUyyzb9QIvmFHdTv3ndzFt/9taoLvHjFpJkU4P9HW+/XpdtTzg0saTmGyiQZ7+ZZIXAimgzCEffJqJDvBIEa5qgjAQKBgQDmoQ8v6dHEk/cSGsiIRz6Qx8iLQTrPcwQcfdWHOlbyvMgq5H/WYnwCi6ds0ktpTfTMqJGzdTo9g3MQ1SRFpQdlAyA7WCrHOSYcWZDzATsQ7Lu25/DtswGRKUYiBK9542L4gCtJduF95Q+m0fls1upofP3O3ieHQ6PRL12JKLtUSQKBgQDV/drzm4wkPlpDr/D/k3BhkxGCpdYyRpW4yShpZ5iVNo3IIcnuw10/xkBcrGChpC5ixhI52xP3IPwJbTJszdZ9eP7dqTL7gd+acFh486/W0gvYch0dznQWBzeVXDyWjJVVYPyieM5kni734l5nhMu9cNmeC1TJE5f8KF9ImvS2sQKBgQDYN/NHFk1loNsoDBgpO7H6hnMLqzH5v3kBRS/lQdq2ZCq9m9AGK/rbYBatPVMZ/M4e+YLv3l2lwhEknM8OxDN0jkOvn28rq/aA6a+tQ2Ae8/Lg/f6wuvwjHbD0v7PL8FSfaXoru9qX7yKHYaAYXD0TjOtfAIPKmq2AtolYx+kokQKBgQCw0GOE3Casn9Snjw3br3CxPvq979cPjaESoSvCBDZgPEZkcf7PSR+YnW/64vepN+aX+L+AjJNvpBJ8m3yJyH6NCFfWwYJ9rC8dBe0ka34ES2Q8QPXr9fWXafk0cZUidCDD/jJg8N7g5o86hRGqCWDrM/6sBwLUblsroBQzAs5m0QKBgQCsbTwR9zpo3IxHmTSETRdLxUbqvygSiQtI+SYGepU4jDW7Ij98YnX/iZmbRNbshXdRmksg22t9KAPz7BQ9hCH4bGSlkx7V5LhfQE44MiVk/fDYuKY3bLtaK+vwfzvt8fvjYKOy0YeLb1x8vBJ93oHJLIPErY/5v2DLohJY7gsZTw==
+  alipayPublicKey: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDAyLQPfdeZYxmMuz6C4tUupr/7yRGytQ9lIU08pGOwTvnU8ZK9vJi6an5E+ukSY8otIAMy9/kdFhH+2F+r8j3GBinBL5/+YmaVFTE8OIJRrIEhPX0RfclN15kAkwDVJ5DxZtdhkYnCOUQ4ghmm4umkeG7Qqo7PF7gTjrzgyxk8luN3BGr1haiTiHX2lcPzHG+7T0QQHdHssMFHspHP9gvrb8An/cCsNo6o5A5XTIl6bpi3Mksw+cPBAHJ6Ev9bdJtQya82ShcpRX/AO3BF2yzrNxbGjFJTHVjbDUOjQiv64xv6p8AWiiYUseUqM9h9OfPonZ1KnDY1YffZfZKXBSx5AgMBAAECggEAa+Fkca7YMWu1Zn15s8C/z0Vc9cdE8h5EKTGDiUXsy0LGp5UvqqGZTeg+FNfcCYByKOJbJ/CAJPiuxU/L6eq7Cs90GjlObQofoZmkXbC5rH6+HB3OmTUsqzTU1+9rbdygTZZhPKY20ss9E+op9KvSV0lVqctn8xew2LDtnVXKH47Pl+rMw0RbGAKDLEgoEPtkR9APqNUUxSI0mwh5kcnvm6zEj/Gp9TzMdXjiBd96L0cT+ZhBjHI0uaXUGgxzdUyyzb9QIvmFHdTv3ndzFt/9taoLvHjFpJkU4P9HW+/XpdtTzg0saTmGyiQZ7+ZZIXAimgzCEffJqJDvBIEa5qgjAQKBgQDmoQ8v6dHEk/cSGsiIRz6Qx8iLQTrPcwQcfdWHOlbyvMgq5H/WYnwCi6ds0ktpTfTMqJGzdTo9g3MQ1SRFpQdlAyA7WCrHOSYcWZDzATsQ7Lu25/DtswGRKUYiBK9542L4gCtJduF95Q+m0fls1upofP3O3ieHQ6PRL12JKLtUSQKBgQDV/drzm4wkPlpDr/D/k3BhkxGCpdYyRpW4yShpZ5iVNo3IIcnuw10/xkBcrGChpC5ixhI52xP3IPwJbTJszdZ9eP7dqTL7gd+acFh486/W0gvYch0dznQWBzeVXDyWjJVVYPyieM5kni734l5nhMu9cNmeC1TJE5f8KF9ImvS2sQKBgQDYN/NHFk1loNsoDBgpO7H6hnMLqzH5v3kBRS/lQdq2ZCq9m9AGK/rbYBatPVMZ/M4e+YLv3l2lwhEknM8OxDN0jkOvn28rq/aA6a+tQ2Ae8/Lg/f6wuvwjHbD0v7PL8FSfaXoru9qX7yKHYaAYXD0TjOtfAIPKmq2AtolYx+kokQKBgQCw0GOE3Casn9Snjw3br3CxPvq979cPjaESoSvCBDZgPEZkcf7PSR+YnW/64vepN+aX+L+AjJNvpBJ8m3yJyH6NCFfWwYJ9rC8dBe0ka34ES2Q8QPXr9fWXafk0cZUidCDD/jJg8N7g5o86hRGqCWDrM/6sBwLUblsroBQzAs5m0QKBgQCsbTwR9zpo3IxHmTSETRdLxUbqvygSiQtI+SYGepU4jDW7Ij98YnX/iZmbRNbshXdRmksg22t9KAPz7BQ9hCH4bGSlkx7V5LhfQE44MiVk/fDYuKY3bLtaK+vwfzvt8fvjYKOy0YeLb1x8vBJ93oHJLIPErY/5v2DLohJY7gsZTw==
+  notifyUrl: http://kd33zx.natappfree.cc/alipay/notify
+

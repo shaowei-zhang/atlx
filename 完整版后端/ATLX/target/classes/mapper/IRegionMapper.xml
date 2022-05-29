@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IRegionMapper">
+    <!--
+        useGeneratedKeys=true 获取数据库保存数据的的主键值
+        keyProperty="id" 主键设置设置对象的 id 属性
+    -->
+    <select id="queryName" resultType="Region">
+        select  * from region  where region_name=#{regionName}
+    </select>
+
+    <select id="queryRegionIDbyName" resultType="Region">
+        SELECT id FROM region WHERE region_name=#{region_name}
+    </select>
+</mapper>

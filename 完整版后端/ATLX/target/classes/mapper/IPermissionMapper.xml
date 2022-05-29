@@ -1,0 +1,9 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IPermissionMapper">
+    <select id="queryPermissionByRole" resultType="Permission">
+        SELECT p.id,p.`name`,p.url FROM `permission` p,`role` r,`role_permission` rp
+        WHERE p.id=rp.permission_id AND r.id=rp.role_id AND r.id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,57 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IUserMapper">
+
+    <resultMap id="userMap" type="User">
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="avatar" property="avatar"/>
+        <result column="username" property="username"/>
+        <result column="email" property="email"/>
+        <result column="description" property="role.description"/>
+    </resultMap>
+    <select id="findAll" resultMap="userMap">
+        select * from user,role where user.role_id = role.id
+    </select>
+
+    <select id="findUserByAccount" resultType="User">
+        select * from user where account=#{account}
+    </select>
+
+    <update id="updateUser" parameterType="User">
+        update user
+        set username=#{username},email=#{email},avatar=#{avatar},role_id=#{roleId}
+        where account=#{account}
+    </update>
+
+    <update id="uploadAvatar" parameterType="User">
+        update user
+        set avatar=#{avatar}
+        where account=#{account}
+    </update>
+
+    <update id="resetPassword" parameterType="User">
+        update user
+        set password=#{password},salt=#{salt}
+        where account=#{account}
+    </update>
+
+    <insert id="insertUser" parameterType="User">
+        insert into user(account,username,avatar,email,password,salt,role_id) value(#{account},#{username},#{avatar},#{email},#{password},#{salt},#{roleId})
+    </insert>
+
+    <insert id="register" parameterType="user">
+        insert into user(account,email,password,salt) value(#{account},#{email},#{password},#{salt})
+    </insert>
+
+    <delete id="deleteUserByAccount" parameterType="java.lang.String">
+        delete from user where account=#{account}
+    </delete>
+
+    <update id="updatePwd" parameterType="user">
+        update user
+        set password=#{password},salt=#{salt}
+        where account=#{account}
+    </update>
+</mapper>

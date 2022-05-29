@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IFoodMessageMapper">
+
+    <resultMap id="foodMessageMap" type="FoodMessage">
+        <id column="id" property="id"/>
+        <result column="comment_date" property="commentDate"/>
+        <result column="comment" property="comment"/>
+        <result column="account" property="account"/>
+        <result column="food_name" property="foodLocal.foodName"/>
+    </resultMap>
+    <select id="findAllByName" resultMap="foodMessageMap">
+        select * from food_local f,food_message fm where f.id=fm.food_local_id and food_name=#{foodName}
+    </select>
+    <select id="findAllByAccount" resultMap="foodMessageMap">
+        select * from food_message fm,food_local f where f.id=fm.food_local_id and fm.account=#{account}
+    </select>
+</mapper>

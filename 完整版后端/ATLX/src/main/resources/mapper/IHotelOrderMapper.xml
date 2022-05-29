@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IHotelOrderMapper">
+
+    <resultMap id="hotelOrderMap" type="HotelOrder">
+    <id column="id" property="id"/>
+    <result column="number" property="number"/>
+    <result column="place_order_datetime" property="placeOrderDatetime"/>
+    <result column="hotel_img" property="hotel.hotelImg"/>
+    <result column="hotel_addr" property="hotel.hotelAddr"/>
+    <result column="price" property="hotel.price"/>
+    <result column="hotel_name" property="hotel.hotelName"/>
+    <result column="account" property="user.account"/>
+</resultMap>
+    <select id="findAll" resultMap="hotelOrderMap">
+        select * from hotel_order ho,user u,hotel h where ho.user_id=u.id and h.id = ho.hotel_id
+    </select>
+
+    <select id="findByAccount" resultMap="hotelOrderMap">
+        select * from hotel_order ho,user u,hotel h where ho.user_id=u.id and h.id = ho.hotel_id and u.account=#{account}
+    </select>
+</mapper>

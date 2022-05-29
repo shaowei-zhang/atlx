@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IScenicMapper">
+
+    <select id="query" resultMap="scenicMap">
+        select * from scenic s,region r where s.region_id=r.id
+    </select>
+    <resultMap id="scenicMap" type="Scenic">
+        <id column="id" property="id"></id>
+        <result column="region_id" property="RegionId"></result>
+        <result column="scenic_img" property="scenicImg"></result>
+        <result column="scenic_name" property="scenicName"></result>
+        <result column="scenic_introduce" property="scenicIntroduce"></result>
+        <result column="region_id" property="region.id"></result>
+        <result column="region_name" property="region.RegionName"></result>
+    </resultMap>
+
+    <select id="queryByName" resultMap="scenicMap">
+        select * from scenic s,region r where s.region_id=r.id and scenic_name=#{scenicName}
+    </select>
+
+    <select id="queryById" resultMap="scenicMap">
+       SELECT * FROM scenic s,region r WHERE s.region_id=r.id AND s.id=#{id}
+    </select>
+
+    <select id="queryIdByName" resultType="scenic">
+        select * from scenic where scenic_name=#{scenicName}
+    </select>
+</mapper>

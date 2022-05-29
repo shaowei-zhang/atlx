@@ -1,0 +1,13 @@
+package com.atlx;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AtlxApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AtlxApplication.class, args);
+    }
+
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atlx.dao.IHotelMessageMapper">
+    <resultMap id="hotelMessageMap" type="HotelMessage">
+        <id column="id" property="id"/>
+        <result column="comment_date" property="commentDate"/>
+        <result column="comment" property="comment"/>
+        <result column="account" property="account"/>
+        <result column="hotel_name" property="hotel.hotelName"/>
+    </resultMap>
+    <select id="findAllByName" resultMap="hotelMessageMap">
+        select * from hotel_message hm,hotel h where h.id = hm.hotel_id and hotel_name=#{hotelName}
+    </select>
+
+    <select id="findAllByAccount" resultMap="hotelMessageMap">
+        select * from hotel_message hm, hotel h where h.id = hm.hotel_id and hm.account=#{account}
+    </select>
+</mapper>
